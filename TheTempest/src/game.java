@@ -6,7 +6,8 @@ public class game {
 	static int heroClass; //This is the class variable. 0 is Knight. 1 is mage. 2 is archer.
 	static String heroClassName;
 	static String heroName;
-	static String choiceOne;
+	static String pathOne;
+	static String hp;
 	
 	public static void main(String[] args) {
 		beginGame();
@@ -20,21 +21,44 @@ public class game {
 			if(HCS.equalsIgnoreCase("a")) {
 			heroClass = 0;
 			heroClassName = "Knight";
+			beachVilla();
 			} else if(HCS.equalsIgnoreCase("b")) {
 			heroClass = 1;
 			heroClassName = "Archer";
+			beachVilla();
 			} else if(HCS.equalsIgnoreCase("c")) {
 			heroClass = 2;
 			heroClassName = "Mage";
+			beachVilla();
 			} else {
 			choice("Im sorry I didn't understand. Please repeat that with one of the letters A, B or C. (Type in the word okay to continue)");
 				i--;
 			}
 		}
 	}
-	public static void choiceOne() {
-		choice("Wow! you must have been a great " + heroClassName + "! You look at your surroundings. Above the trees in the distence there is smoke! There might be a village! \n Would you like to : a Camp out on the beach or b Go into the forest");
+	public static void beachVilla() { //Would you like to : a (Camp out on the beach) or b (Go into the forest)");
+
+		pathOne = choice("Wow! you must have been a great " + heroClassName + "!\nYou look at your surroundings. Above the trees in the distence there is smoke! There might be a village! \n Would you like to : a (Camp out on the beach) or b (Go into the forest)");
+		for (int i = 0; i < 1; i++) {
+		
+			if (pathOne.equalsIgnoreCase(("a")) ) {
+			
+			} else if (pathOne.equalsIgnoreCase(("a")) ) { 
+			
+			
+			} else {
+				
+			choice("Im sorry I didn't understand. Please repeat that with one of the letters, a or b. (Type in the word 'okay' to continue)");
+			i--;
+		}}
 	}
+	public static void Villa() { //bossFight
+	}
+	
+	
+	
+	
+	
 	//Tools
 	public static String choice(String question) { //Asks the user a question, then receives input. 
 		System.out.println(question); //asks the question
@@ -55,6 +79,17 @@ public class game {
 		}
 		return true;
 	}
-
+	public static boolean fight(String monsterName, int monsterHp, int monsterDmg ) {
+		
+		choice("You enterd a battle with " + monsterName + "! \n");
+		
+		
+		return true;
+		
+	}
+	public static void useSword() {
+		
+	}
+	
 }
 
