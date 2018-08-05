@@ -1,4 +1,4 @@
-
+import java.util.Random;
 import java.util.Scanner;
 public class game {
 	
@@ -8,14 +8,28 @@ public class game {
 	static String heroName;
 	static String pathOne;
 	static String hp;
+	static int weapon = 0;
+	static String monsterName;
 	
+	/*
+	0 = old
+	1 = new
+	2 = 
+	
+	
+	
+	
+	
+	
+	*/
 	public static void main(String[] args) {
+		fight("treeDerpah", 50);
 		beginGame();
 		
 	}
 
 	public static void beginGame() {//defines the hero's class and name
-			heroName = choice("You have washed up on the beach of an island with no idea how you got there. You can almost remember one thing. Your name \n what is it?"); // Defines the name variable.
+			heroName = choice("You have washed up on the beach of an island with no idea how you got there. You can almost remember one thing. Your name \nwhat is it?"); // Defines the name variable.
 			for (int i = 0; i < 1; i++) {
 			String HCS = choice( heroName + "! That sounds like the name of a mighty hero.\nYou have a backpack on your back. Lets see whats inside.\nDo you see: a (A rustey broadsword), b(A bow with weak string), or c(A worn down staff ) \n(hint: type either a b or c below");
 			if(HCS.equalsIgnoreCase("a")) {
@@ -79,16 +93,27 @@ public class game {
 		}
 		return true;
 	}
-	public static boolean fight(String monsterName, int monsterHp, int monsterDmg ) {
-		
+	public static boolean fight( String monsterNameTemp, int maxHealth) {
+		int currentHealth = maxHealth;
+		monsterName = monsterNameTemp;
 		choice("You enterd a battle with " + monsterName + "! \n");
 		
 		
+		int DMGdone = useSword();
+		currentHealth -= DMGdone;
+		System.out.println("You did " + DMGdone + " to " + monsterName);
 		return true;
 		
 	}
-	public static void useSword() {
+	public static int useSword() {
 		
+		Random random = new Random();
+		System.out.println("It sliced through " + monsterName);
+		if( weapon == 0 ) {
+			int randomInt = random.nextInt(3) + 7;
+			return randomInt;
+		}
+		return 0;
 	}
 	
 }
