@@ -3,13 +3,16 @@ import java.util.Scanner;
 public class game {
 	
 
-	static int heroClass; //This is the class variable. 0 is Knight. 1 is mage. 2 is archer.
+	static int heroClass; //This is the class variable. 0 is Knight. 1 is archer. 2 is mage.
 	static String heroClassName;
 	static String heroName;
 	static String pathOne;
-	static String hp;
-	static int weapon = 0;
+	static int heroHp = 100;
+	static int heroWeapon = 0;
+	static int heroSpeed = 0;
 	static String monsterName;
+	static String monsterWeapon;
+	static int monsterAttack;
 	
 	/*
 	0 = old
@@ -23,8 +26,8 @@ public class game {
 	
 	*/
 	public static void main(String[] args) {
-		fight("treeDerpah", 50);
-		beginGame();
+		fight("treeDerpah", 50, "swung his sword");
+		//beginGame();
 		
 	}
 
@@ -35,14 +38,18 @@ public class game {
 			if(HCS.equalsIgnoreCase("a")) {
 			heroClass = 0;
 			heroClassName = "Knight";
+			heroSpeed = 25;
+			
 			beachVilla();
 			} else if(HCS.equalsIgnoreCase("b")) {
 			heroClass = 1;
 			heroClassName = "Archer";
+			heroSpeed = 75;
 			beachVilla();
 			} else if(HCS.equalsIgnoreCase("c")) {
 			heroClass = 2;
 			heroClassName = "Mage";
+			heroSpeed = 50;
 			beachVilla();
 			} else {
 			choice("Im sorry I didn't understand. Please repeat that with one of the letters A, B or C. (Type in the word okay to continue)");
@@ -62,7 +69,7 @@ public class game {
 			
 			} else {
 				
-			choice("Im sorry I didn't understand. Please repeat that with one of the letters, a or b. (Type in the word 'okay' to continue)");
+			choice("Im sorry I didn't understand. Please repeat that with one of the letters, a or b.");
 			i--;
 		}}
 	}
@@ -93,28 +100,93 @@ public class game {
 		}
 		return true;
 	}
-	public static boolean fight( String monsterNameTemp, int maxHealth) {
-		int currentHealth = maxHealth;
+	public static void fight( String monsterNameTemp, int monsterMaxHealth, String monsterWeaponTemp, int monsterSpeed, int monsterAttackTemp ) {
+		monsterWeapon = monsterWeaponTemp;
+		int monsterCurrentHealth = monsterMaxHealth;
+		monsterAttack = monsterAttackTemp;
 		monsterName = monsterNameTemp;
-		choice("You enterd a battle with " + monsterName + "! \n");
+		boolean tryToDodge = false;
+		System.out.println("You enterd a battle with " + monsterName + "!");
+		for (int i = 0; monsterCurrentHealth > 0; i++) {
+			tryToDodge = false;
+			String oof = choice("Would you like to a (use your sword) or, b(try to dodge the enemys upcoming attack)  ");
+			if (oof.equalsIgnoreCase("a")) {
+				int  DMGdone = useSword();
+				monsterCurrentHealth -= DMGdone;
+				if (monsterCurrentHealth < 0) {
+					System.out.println("You did " + DMGdone + " Damage to " + monsterName);
+					System.out.println("You have defeated " + monsterName + "!");
+			//return true;
+				} else {
+					System.out.println("You did " + DMGdone + " to " + monsterName + ". They have " + monsterCurrentHealth + "/" + monsterMaxHealth +" health left");
+				} 
+			}else if(oof.equalsIgnoreCase("b")) {
+				tryToDodge = true;
+			}
+			if(tryToDodge = true && monsterSpeed < heroSpeed) {
+				System.out.println(monsterName + "swung his " + monsterWeapon + " ,but you dodged it!!");
+			} else if(tryToDodge = false) {
+				mnstrUseWeapon();
+			}
+			
+		//return false;
+		}
+	}
+	public static int useWeapon() {
+		if(heroClass == 0) { 
+			return useSword();
+		} else if(heroClass == 1) { 
+			return useBow();
+		} else if(heroClass == 2) { 
+			return useStaff();
+		} else {
+			return 0;
+		}
 		
-		
-		int DMGdone = useSword();
-		currentHealth -= DMGdone;
-		System.out.println("You did " + DMGdone + " to " + monsterName);
-		return true;
+	
 		
 	}
 	public static int useSword() {
 		
 		Random random = new Random();
 		System.out.println("It sliced through " + monsterName);
-		if( weapon == 0 ) {
+		if( heroWeapon == 0 ) {
 			int randomInt = random.nextInt(3) + 7;
+			
 			return randomInt;
 		}
 		return 0;
 	}
+	public static int useBow() {
+	
+	Random random = new Random();
+	System.out.println("It peirced " + monsterName);
+	if( heroWeapon == 0 ) {
+		int randomInt = random.nextInt(3) + 7;
+		
+		return randomInt;
+	}
+	return 0;
+}
+	public static int useStaff() {
+
+	
+	Random random = new Random();
+	System.out.println("It's magic blasted " + monsterName);
+	if( heroWeapon == 0 ) {
+		int randomInt = random.nextInt(3) + 7;
+		
+		return randomInt;
+	}
+	return 0;
+}
+	public static int mnstrUseWeapon() {
+		Random random = new Random();
+		System.out.println(monsterName + " " + monsterWeapon + " at " +heroName);
+			int randomInt = random.nextInt(monsterAttack/3) + monsterAttack;
+			return randomInt;
+	}
 	
 }
+
 
