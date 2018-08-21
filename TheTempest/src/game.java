@@ -1,7 +1,8 @@
+
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
-public class game {
+public class oof {
 	
 
 	static int heroClass; //This is the class variable. 0 is Knight. 1 is archer. 2 is mage.
@@ -9,6 +10,7 @@ public class game {
 	static String heroName;
 	static String weaponName;
 	static String pathOne;
+	static int heroMaxHP = 50;
 	static int heroHp = 50;
 	static int heroWeapon = 0;
 	static int heroSpeed = 0;
@@ -33,6 +35,7 @@ public class game {
 		
 		//fight("treeDerpah", 50, "swung his sword");
 		beginGame();
+		
 		
 	}
 	//game
@@ -103,7 +106,12 @@ public class game {
 		+ "\nJimmy: that is yours now. You won it. Its called a trophy"  ,1);
 		heroDmg=10;
 		weaponName = "wind " + weaponName;
-		System.out.println(weaponName);
+		try {
+			slowText(weaponName);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String mountainTrap = choice("You hear thunder. On top of one of the many mountens, there was a giant storm. \n"
 		+ "Jimmy: It must be another one of the tempests minions. You better go up there quick before they make it to the village! \n"
 		+ "Jimmy: Or... maybe we could let them, come to us... I could talk to the villagers about setting up defences. \n"
@@ -128,8 +136,22 @@ public class game {
 	}
 
 	//Tools
+	public static void slowText(String string) throws InterruptedException {
+		for (int i = 0; i < string.length(); i++) {
+			
+			System.out.print(string.charAt(i));
+			Thread.sleep(20);
+		}
+		System.out.println("");
+		
+	}
 	public static String choice(String question) { //Asks the user a question, then receives input. 
-		System.out.println(question); //asks the question
+		try {
+			slowText(question);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //asks the question
 
 		Scanner kb = new Scanner(System.in); //scans for input
 		
@@ -139,8 +161,9 @@ public class game {
 		return in; //returns in.
 		} 
 	public static void waitMessage (String message, int time) {
-		System.out.println(message);
+		
 		try {
+			slowText(message);
 			Thread.sleep(time * 1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -161,21 +184,46 @@ public class game {
 		int monsterCurrentHealth = monsterMaxHealth;
 		monsterAttack = monsterAttackTemp;
 		monsterName = monsterNameTemp;
-		System.out.println("You enterd a battle with " + monsterName + "!");
+		try {
+			slowText("You enterd a battle with " + monsterName + "!");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for (int i = 0; monsterCurrentHealth > 0; i++) {
 			String oof = choice("Would you like to a (use your " + weaponName + " ) or, b(try to dodge the enemys upcoming attack)  ");
 			if (oof.equalsIgnoreCase("a")) {
 				int  DMGdone = useSword();
 				monsterCurrentHealth -= DMGdone;
 				if (monsterCurrentHealth <= 0) {
-					System.out.println("You did " + DMGdone + " Damage to " + monsterName);
-					System.out.println("You have defeated " + monsterName + "!\n");
+					try {
+						slowText("You did " + DMGdone + " Damage to " + monsterName);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					try {
+						slowText("You have defeated " + monsterName + "!\n");
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					return true;
 					} else {
-					System.out.println("You did " + DMGdone + " to " + monsterName + ". They have " + monsterCurrentHealth + "/" + monsterMaxHealth +" health left");
+					try {
+						slowText("You did " + DMGdone + " to " + monsterName + ". They have " + monsterCurrentHealth + "/" + monsterMaxHealth +" health left");
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					int dmgTaken = mnstrUseWeapon();
 					heroHp-=dmgTaken;
-					System.out.println("You took " + dmgTaken + "/" + heroHp + " Damage!");
+					try {
+						slowText("You took " + dmgTaken + "/" + heroMaxHP + " Damage! You have " + heroHp + " left.");
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					if(heroHp <= 0) {
 						waitMessage("Everything started to black away. ", 10);
 						waitMessage("A voice fills you head. Its telling you, \nWake Up! You are needed! \n You where zipped back to a few minuts before. Don't die this time. ", 10);
@@ -183,14 +231,19 @@ public class game {
 					} 
 					}
 					}else if(oof.equalsIgnoreCase("b")) {
-				System.out.println(monsterName + " " + monsterWeapon + " ,but you dodged it!!");
+				try {
+					slowText(monsterName + " " + monsterWeapon + " ,but you dodged it!!");
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 						}
 					}
 		return false;
 			}
 			
 			
-		//return false;
+
 		
 	
 	public static int useWeapon() {
@@ -210,7 +263,12 @@ public class game {
 	public static int useSword() {
 		
 		Random random = new Random();
-		System.out.println("It sliced through " + monsterName);
+		try {
+			slowText("It sliced through " + monsterName);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if( heroWeapon == 0 ) {
 			int randomInt = random.nextInt(heroDmg/2) + heroDmg;
 			
@@ -221,7 +279,12 @@ public class game {
 	public static int useBow() {
 	
 	Random random = new Random();
-	System.out.println("It peirced " + monsterName);
+	try {
+		slowText("It peirced " + monsterName);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	if( heroWeapon == 0 ) {
 		int randomInt = random.nextInt(3) + 7;
 		
@@ -233,7 +296,12 @@ public class game {
 
 	
 	Random random = new Random();
-	System.out.println("It's magic blasted " + monsterName);
+	try {
+		slowText("It's magic blasted " + monsterName);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	if( heroWeapon == 0 ) {
 		int randomInt = random.nextInt(3) + 7;
 		
@@ -242,8 +310,14 @@ public class game {
 	return 0;
 }
 	public static int mnstrUseWeapon() {
+		
 		Random random = new Random();
-		System.out.println(monsterName + " " + monsterWeapon + " at " +heroName);
+		try {
+			slowText(monsterName + " " + monsterWeapon + " at " +heroName);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			int randomInt = random.nextInt(monsterAttack/3) + monsterAttack;
 			return randomInt;
 	}
