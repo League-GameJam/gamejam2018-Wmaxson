@@ -1,3 +1,5 @@
+package oofbleck;
+
 
 import java.io.*;
 import java.util.Random;
@@ -48,19 +50,24 @@ public class oof {
 			weaponName = "sword";
 			heroClassName = "Knight";
 			heroSpeed = 25;
-			
+			heroHp = 25;
+			heroDmg = 7;
 			beachVilla();
 			} else if(HCS.equalsIgnoreCase("b")) {
 			heroClass = 1;
 			weaponName = "bow";
 			heroClassName = "Archer";
 			heroSpeed = 75;
+			heroHp = 75;
+			heroDmg = 3;
 			beachVilla();
 			} else if(HCS.equalsIgnoreCase("c")) {
 			heroClass = 2;
 			weaponName = "staff";
 			heroClassName = "Mage";
 			heroSpeed = 50;
+			heroHp = 50;
+			heroDmg = 5;
 			beachVilla();
 			} else {
 			choice("Im sorry I didn't understand. Please repeat that with one of the letters A, B or C. (Type in the word okay to continue)");
@@ -121,14 +128,23 @@ public class oof {
 		if (mountainTrap.equalsIgnoreCase("a")) {
 			
 		} else if (mountainTrap.equalsIgnoreCase("b")) {
-			
+		mountain();	
 		}
 		
 	}
 	}
 	public static void mountain() {
 		
-		choice("");
+		choice("Jimmy Are you sure? "
+				+ "\n... Alright then. If you are going into the mountains, you are going to need some tools. "
+				+ "\nYou are going to need the help of my good friend, Bryn Rainbow."
+				+ "\nShe is an alchmist, which means she makes potions. Why dont you head over to her shop? "
+				+ "\n\nYou look around. The villagers are already rebuilding things. It looks like they have done it before"
+				+ "\nWould you like to: "
+				+ "\na (Talk to some of the villagers making houses)"
+				+ "\nb (Help the villagers)"
+				+ "\nor c (Go to Dr. Rainbows shop) "
+				+ "\n\n[Warning. If you choose c, you wont be able to go back to choices a or b. Maybe you should do a or b first.]");
 		
 	}
 	public static void trap() {
@@ -244,8 +260,6 @@ public class oof {
 			
 			
 
-		
-	
 	public static int useWeapon() {
 		if(heroClass == 0) { 
 			return useSword();
@@ -311,7 +325,7 @@ public class oof {
 }
 	public static int mnstrUseWeapon() {
 		
-		Random random = new Random();
+		Random random = new Random(); {
 		try {
 			slowText(monsterName + " " + monsterWeapon + " at " +heroName);
 		} catch (InterruptedException e) {
@@ -320,7 +334,7 @@ public class oof {
 		}
 			int randomInt = random.nextInt(monsterAttack/3) + monsterAttack;
 			return randomInt;
-	}
+	
 
 	/*
 	public static void makeFile(String name) {
@@ -365,7 +379,8 @@ public class oof {
 			}
 */
 	
+	
+
+		}
 	}
-
-
-
+}
