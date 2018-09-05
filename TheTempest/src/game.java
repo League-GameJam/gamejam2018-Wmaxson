@@ -1,5 +1,4 @@
-package oofbleck;
-
+package oof;
 
 import java.io.*;
 import java.util.Random;
@@ -21,7 +20,7 @@ public class oof {
 	static String monsterName;
 	static String monsterWeapon;
 	static int monsterAttack;
-	
+	static String bp = "";
 	/*
 	1 = new
 	2 = Wind Spirit
@@ -84,7 +83,7 @@ public class oof {
 			
 			} else if (pathOne.equalsIgnoreCase(("b")) ) { 
 			
-			Villa();
+			villa();
 				
 			} else {
 				
@@ -92,7 +91,10 @@ public class oof {
 			i--;
 		}}
 	}
-	public static void Villa() { // First Fight
+	public static void beach() {
+		choice("");
+	}
+	public static void villa() { // First Fight
 		int a = 1;
 		waitMessage("You arived at the village. It was chaos. Villagers where running around everywhere. In the center of it all is a giant storm spirit. \n"
 	+ "It is blowing strong winds and tornados in every direction"
@@ -135,7 +137,7 @@ public class oof {
 	}
 	public static void mountain() {
 		
-		choice("Jimmy Are you sure? "
+		String villageChoice = choice("Jimmy: Are you sure? "
 				+ "\n... Alright then. If you are going into the mountains, you are going to need some tools. "
 				+ "\nYou are going to need the help of my good friend, Bryn Rainbow."
 				+ "\nShe is an alchmist, which means she makes potions. Why dont you head over to her shop? "
@@ -146,11 +148,28 @@ public class oof {
 				+ "\nor c (Go to Dr. Rainbows shop) "
 				+ "\n\n[Warning. If you choose c, you wont be able to go back to choices a or b. Maybe you should do a or b first.]");
 		
+				if (villageChoice.equalsIgnoreCase("a")) {
+					
+				} else if (villageChoice.equalsIgnoreCase("b")) {
+					
+				} else if (villageChoice.equalsIgnoreCase("c")) {
+					
+				} 
+	
 	}
 	public static void trap() {
 		
 	}
-
+	public static void potShop() {
+		String shopChoice = choice("When you walk into the shop you are greeted by the woman at the counter.\n"
+			 + "Bryn: Hello! you must be " + heroName + "! Thank you ever so much for saving the village!\n"
+			 + "Is there anything I can do for you? I have a few potions in stock. Would you like some?\n"
+			 + "I will even give you one free Health potion in return for saving the village.\n"
+			 + "Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)" );
+		if (shopChoice.equalsIgnoreCase("a")) {
+			
+		}
+	}
 	//Tools
 	public static void slowText(String string) throws InterruptedException {
 		for (int i = 0; i < string.length(); i++) {
@@ -207,7 +226,7 @@ public class oof {
 			e.printStackTrace();
 		}
 		for (int i = 0; monsterCurrentHealth > 0; i++) {
-			String oof = choice("Would you like to a (use your " + weaponName + " ) or, b(try to dodge the enemys upcoming attack)  ");
+			String oof = choice("Would you like to a (use your " + weaponName + " ), b(try to dodge the enemys upcoming attack) or c(use an item)");
 			if (oof.equalsIgnoreCase("a")) {
 				int  DMGdone = useSword();
 				monsterCurrentHealth -= DMGdone;
@@ -253,6 +272,10 @@ public class oof {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+//						} else if( oof.equalsIgnoreCase("c")) {
+//						if (bp.equals("")) {
+//							
+//						} else if
 						}
 					}
 		return false;
@@ -383,4 +406,36 @@ public class oof {
 
 		}
 	}
+	public static void dmgPot() {
+		try {
+			slowText("You consumed the Strength potion!\n"
+					+ "+ 5 Damage");
+			heroDmg += 5 ;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void healPot() {
+		try {
+			slowText("You consumed the Health potion!\n"
+					+ "+ 5 Health");
+			heroHp += 5 ;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void speedPot() {
+		try {
+			slowText("You consumed the Speed potion!\n"
+					+ "+ 10 Speed! ");
+			heroSpeed += 10 ;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
 }
