@@ -76,23 +76,22 @@ public class oof {
 	}
 	public static void beachVilla() { //Would you like to : a (Camp out on the beach) or b (Go into the forest)");
 
-		pathOne = choice("Wow! you must have been a great " + heroClassName + "!\nYou look at your surroundings. Above the trees in the distence there is smoke! There might be a village! \n Would you like to : a (Camp out on the beach) or b (Go into the forest)");
+		pathOne = choice("Wow! you must have been a great " + heroClassName + "!\nYou look at your surroundings. Above the trees in the distence there is smoke! There might be a village. You start your journey into the forest.\n(type in anything anything to continue.)");
 		for (int i = 0; i < 1; i++) {
 		
-			if (pathOne.equalsIgnoreCase(("a")) ) {
+			if (pathOne.equalsIgnoreCase(("sad")) ) {
 			
-			} else if (pathOne.equalsIgnoreCase(("b")) ) { 
+				System.out.println("Ik right? me too m89");
+				
+			} else if (pathOne.equalsIgnoreCase(("okay")) ) { 
 			
 			villa();
 				
 			} else {
 				
-			choice("Im sorry I didn't understand. Please repeat that with one of the letters, a or b.");
+				villa();
 			i--;
 		}}
-	}
-	public static void beach() {
-		choice("");
 	}
 	public static void villa() { // First Fight
 		int a = 1;
@@ -114,9 +113,10 @@ public class oof {
 		+ "\nOn the ground where you defeated the spirit, there lies a " + weaponName + ". "
 		+ "\nJimmy: that is yours now. You won it. Its called a trophy"  ,1);
 		heroDmg=10;
+		heroGold+=30;
 		weaponName = "wind " + weaponName;
 		try {
-			slowText(weaponName);
+			slowText("you got a"+weaponName+"!");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -167,15 +167,20 @@ public class oof {
 			 + "I will even give you one free Health potion in return for saving the village.\n"
 			 + "Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)" );
 		if (shopChoice.equalsIgnoreCase("a")) {
-			
+		choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+ } else if (shopChoice.equalsIgnoreCase("b")) {
+	 	choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+ } else if (shopChoice.equalsIgnoreCase("b")) {
+	 	choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");                  
 		}
-	}
+		
+		}
 	//Tools
 	public static void slowText(String string) throws InterruptedException {
 		for (int i = 0; i < string.length(); i++) {
 			
 			System.out.print(string.charAt(i));
-			Thread.sleep(20);
+			Thread.sleep(30);
 		}
 		System.out.println("");
 		
@@ -357,52 +362,6 @@ public class oof {
 		}
 			int randomInt = random.nextInt(monsterAttack/3) + monsterAttack;
 			return randomInt;
-	
-
-	/*
-	public static void makeFile(String name) {
-		File file = new File(name);
-	    file.createNewFile();
-	      
-	} 
-	public static void writeFile(String fileName, String string ) {
-		FileWriter writer;
-		try {
-		writer = new FileWriter(fileName, true);
-		writer.write(string);
-		writer.close();
-		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public static void clearFile(String fileName) {
-		FileWriter writer;
-		try {
-		writer = new FileWriter(fileName, false);
-		writer.write("");
-		writer.close();
-		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public static void String readFile(String fileName) {
-		 FileReader fr = new FileReader(fileName); 
-	      char [] a = new char[50];
-	      fr.read(a);   // reads the content to the array
-	      String output = "";
-	      for(char c : a) {
-	    	  output + a;
-	    	  fr.close();
-	      }
-	      return output;
-			}
-*/
-	
-	
 
 		}
 	}
@@ -436,6 +395,7 @@ public class oof {
 			e.printStackTrace();
 		}
 	}
+
 
 
 }
