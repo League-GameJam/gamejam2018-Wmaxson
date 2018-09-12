@@ -1,9 +1,9 @@
-package oof;
+package theTempest;
 
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
-public class oof {
+public class theTempest {
 	
 
 	static int heroClass; //This is the class variable. 0 is Knight. 1 is archer. 2 is mage.
@@ -17,6 +17,9 @@ public class oof {
 	static int heroSpeed = 0;
 	static int heroDmg = 5;
 	static int heroGold =0;
+	static int hpPot = 0;
+	static int atkPot = 0;
+	static int spdPot = 0;
 	static String monsterName;
 	static String monsterWeapon;
 	static int monsterAttack;
@@ -35,9 +38,11 @@ public class oof {
 	public static void main(String[] args) {
 		
 		//fight("treeDerpah", 50, "swung his sword");
-		beginGame();
-		
-		
+		//beginGame();
+		bp += "what upp";
+		System.out.println(bp);
+		bp = bp.substring(0, bp.length()-3);
+		 System.out.println(bp);
 	}
 	//game
 	public static void beginGame() {//defines the hero's class and name
@@ -161,17 +166,30 @@ public class oof {
 		
 	}
 	public static void potShop() {
+		
 		String shopChoice = choice("When you walk into the shop you are greeted by the woman at the counter.\n"
 			 + "Bryn: Hello! you must be " + heroName + "! Thank you ever so much for saving the village!\n"
 			 + "Is there anything I can do for you? I have a few potions in stock. Would you like some?\n"
 			 + "I will even give you one free Health potion in return for saving the village.\n"
 			 + "Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)" );
 		if (shopChoice.equalsIgnoreCase("a")) {
-		choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+		String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+		if (potConf.equalsIgnoreCase("a")) {
+			bp += "hppot";
+			hpPot++;
+		}
  } else if (shopChoice.equalsIgnoreCase("b")) {
-	 	choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
- } else if (shopChoice.equalsIgnoreCase("b")) {
-	 	choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");                  
+	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+		if (potConf.equalsIgnoreCase("a")) {
+			bp += "hppot";
+			hpPot++;
+		}
+ } else if (shopChoice.equalsIgnoreCase("c")) {
+	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+		if (potConf.equalsIgnoreCase("a")) {
+			bp += "hppot";
+			hpPot++;
+		}                  
 		}
 		
 		}
@@ -285,9 +303,6 @@ public class oof {
 					}
 		return false;
 			}
-			
-			
-
 	public static int useWeapon() {
 		if(heroClass == 0) { 
 			return useSword();
@@ -395,7 +410,4 @@ public class oof {
 			e.printStackTrace();
 		}
 	}
-
-
-
 }
