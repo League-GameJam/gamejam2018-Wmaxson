@@ -24,6 +24,7 @@ public class theTempest {
 	static String monsterWeapon;
 	static int monsterAttack;
 	static String bp = "";
+	static boolean hasPot false;
 	/*
 	1 = new
 	2 = Wind Spirit
@@ -38,11 +39,8 @@ public class theTempest {
 	public static void main(String[] args) {
 		
 		//fight("treeDerpah", 50, "swung his sword");
-		//beginGame();
-		bp += "what upp";
-		System.out.println(bp);
-		bp = bp.substring(0, bp.length()-3);
-		 System.out.println(bp);
+		beginGame();
+		
 	}
 	//game
 	public static void beginGame() {//defines the hero's class and name
@@ -55,6 +53,7 @@ public class theTempest {
 			heroClassName = "Knight";
 			heroSpeed = 25;
 			heroHp = 25;
+			heroMaxHP = 25;
 			heroDmg = 7;
 			beachVilla();
 			} else if(HCS.equalsIgnoreCase("b")) {
@@ -63,6 +62,7 @@ public class theTempest {
 			heroClassName = "Archer";
 			heroSpeed = 75;
 			heroHp = 75;
+			heroMaxHP = 25;
 			heroDmg = 3;
 			beachVilla();
 			} else if(HCS.equalsIgnoreCase("c")) {
@@ -71,6 +71,7 @@ public class theTempest {
 			heroClassName = "Mage";
 			heroSpeed = 50;
 			heroHp = 50;
+			heroMaxHP = 25;
 			heroDmg = 5;
 			beachVilla();
 			} else {
@@ -171,28 +172,45 @@ public class theTempest {
 			 + "Bryn: Hello! you must be " + heroName + "! Thank you ever so much for saving the village!\n"
 			 + "Is there anything I can do for you? I have a few potions in stock. Would you like some?\n"
 			 + "I will even give you one free Health potion in return for saving the village.\n"
-			 + "Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)" );
+			 + "Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)\n"
+			 + "Or, If you want, you dont have to buy anything.\n"
+			 + "(Type in leave to leave)" );
+		hpPot++;
+		if (shopChoice.equalsIgnoreCase("leave")  ) {
+			bossTwo();
+		}
 		if (shopChoice.equalsIgnoreCase("a")) {
 		String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
-		if (potConf.equalsIgnoreCase("a")) {
-			bp += "hppot";
+		if (potConf.equalsIgnoreCase("yes")) {
+		
 			hpPot++;
+			bossTwo();
 		}
  } else if (shopChoice.equalsIgnoreCase("b")) {
 	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
-		if (potConf.equalsIgnoreCase("a")) {
-			bp += "hppot";
-			hpPot++;
+		if (potConf.equalsIgnoreCase("yes")) {
+			
+			atkPot++;
+			bossTwo();
 		}
  } else if (shopChoice.equalsIgnoreCase("c")) {
 	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
-		if (potConf.equalsIgnoreCase("a")) {
-			bp += "hppot";
-			hpPot++;
-		}                  
+		if (potConf.equalsIgnoreCase("yes")) {
+			
+			spdPot++;
+			bossTwo();
+		}                 
 		}
-		
 		}
+	public static void bossTwo () {
+	choice("AROUND AN HOUR LATER\n\n"
+			+ "You are a good way up the mountain. The Storm gets larger and larger as you get closer and closer. \n"
+			+ "Eventualy you are so close you can see the storm clearly. It looks like a storm, but in the center there is a humanoid figure.\n"
+			+ "They are whereing a robe, and they are completely white. You also notice they have no pupils. All you can see is the white of their eyes. \n"
+			+ "It notices you.\n"
+			+ "Spirit: Halt! I am under orders to kill you. Prepare for destruction");
+			fight("Storm Spirit", 50, "shot a bolt of lightning", 74, 9);
+	}
 	//Tools
 	public static void slowText(String string) throws InterruptedException {
 		for (int i = 0; i < string.length(); i++) {
@@ -242,6 +260,9 @@ public class theTempest {
 		int monsterCurrentHealth = monsterMaxHealth;
 		monsterAttack = monsterAttackTemp;
 		monsterName = monsterNameTemp;
+		if (hpPot <= 1 || spdPot <= 1 || spdPot <= 1) {
+			hasPot = true;
+		}
 		try {
 			slowText("You enterd a battle with " + monsterName + "!");
 		} catch (InterruptedException e) {
@@ -295,10 +316,12 @@ public class theTempest {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-//						} else if( oof.equalsIgnoreCase("c")) {
-//						if (bp.equals("")) {
-//							
-//						} else if
+					} else if( oof.equalsIgnoreCase("c")) {
+						if (hasPot = true ) {
+							
+						} else {
+							slowText("Sorry, you dont have any potions.");
+						}
 						}
 					}
 		return false;
