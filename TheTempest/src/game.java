@@ -3,7 +3,7 @@ package theTempest;
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
-public class theTempest {
+public class game {
 	
 
 	static int heroClass; //This is the class variable. 0 is Knight. 1 is archer. 2 is mage.
@@ -24,7 +24,7 @@ public class theTempest {
 	static String monsterWeapon;
 	static int monsterAttack;
 	static String bp = "";
-	static boolean hasPot false;
+	static boolean hasPot = false;
 	/*
 	1 = new
 	2 = Wind Spirit
@@ -318,9 +318,32 @@ public class theTempest {
 				}
 					} else if( oof.equalsIgnoreCase("c")) {
 						if (hasPot = true ) {
+							String potMessage = "You have ";
+							if (hpPot <= 1) {
+								potMessage += hpPot + " hpPot (To use say \"a\" )\n";
+							}
+							if (atkPot <= 1) {
+								potMessage += atkPot + " atkPot (To use say \"b\" )\n";
+							}
+							if (spdPot <= 1) {
+								potMessage += spdPot + " spdPot (To use say \"c\" )\n";
+							}
+							String trainStation = choice(potMessage); 
+							if (trainStation.equalsIgnoreCase("a")) {    
+								
+							} else if (trainStation.equalsIgnoreCase("b")) {
+								
+							} else if (trainStation.equalsIgnoreCase("c")) {
+								
+							} 
 							
 						} else {
-							slowText("Sorry, you dont have any potions.");
+							try {
+								slowText("Sorry, you dont have any potions.");
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 						}
 					}
@@ -417,7 +440,7 @@ public class theTempest {
 		try {
 			slowText("You consumed the Health potion!\n"
 					+ "+ 5 Health");
-			heroHp += 5 ;
+			heroHp += 25 ;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
