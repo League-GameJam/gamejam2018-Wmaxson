@@ -37,9 +37,8 @@ public class game {
 	
 	*/
 	public static void main(String[] args) {
-		
-		//fight("treeDerpah", 50, "swung his sword");
-		beginGame();
+		//fight("treeDerpah", 50, "swung his sword", 0, 0);
+	beginGame();
 		
 	}
 	//game
@@ -202,7 +201,7 @@ public class game {
 		}                 
 		}
 		}
-	public static void bossTwo () {
+    	public static void bossTwo () {
 	choice("AROUND AN HOUR LATER\n\n"
 			+ "You are a good way up the mountain. The Storm gets larger and larger as you get closer and closer. \n"
 			+ "Eventualy you are so close you can see the storm clearly. It looks like a storm, but in the center there is a humanoid figure.\n"
@@ -210,8 +209,9 @@ public class game {
 			+ "It notices you.\n"
 			+ "Spirit: Halt! I am under orders to kill you. Prepare for destruction");
 			fight("Storm Spirit", 50, "shot a bolt of lightning", 74, 9);
+			
 	}
-	//Tools
+	//Tools 
 	public static void slowText(String string) throws InterruptedException {
 		for (int i = 0; i < string.length(); i++) {
 			
@@ -260,9 +260,7 @@ public class game {
 		int monsterCurrentHealth = monsterMaxHealth;
 		monsterAttack = monsterAttackTemp;
 		monsterName = monsterNameTemp;
-		if (hpPot <= 1 || spdPot <= 1 || spdPot <= 1) {
-			hasPot = true;
-		}
+		
 		try {
 			slowText("You enterd a battle with " + monsterName + "!");
 		} catch (InterruptedException e) {
@@ -317,24 +315,33 @@ public class game {
 					e.printStackTrace();
 				}
 					} else if( oof.equalsIgnoreCase("c")) {
+						if (hpPot >= 1 || spdPot >= 1 || spdPot >= 1) {
+							hasPot = true;
+						} else {
+							hasPot = false;
+						}
 						if (hasPot = true ) {
-							String potMessage = "You have ";
-							if (hpPot <= 1) {
+							String potMessage = "You have \n";
+							if (hpPot >= 1) {
 								potMessage += hpPot + " hpPot (To use say \"a\" )\n";
 							}
-							if (atkPot <= 1) {
+							if (atkPot >= 1) {
 								potMessage += atkPot + " atkPot (To use say \"b\" )\n";
 							}
-							if (spdPot <= 1) {
+							if (spdPot >= 1) {
 								potMessage += spdPot + " spdPot (To use say \"c\" )\n";
 							}
+							potMessage += "Say Cancel to Cancel";
 							String trainStation = choice(potMessage); 
 							if (trainStation.equalsIgnoreCase("a")) {    
-								
+								healPot();
+								hpPot--;
 							} else if (trainStation.equalsIgnoreCase("b")) {
-								
+								dmgPot();
+								atkPot--;
 							} else if (trainStation.equalsIgnoreCase("c")) {
-								
+								speedPot();
+								spdPot--;
 							} 
 							
 						} else {
@@ -349,6 +356,7 @@ public class game {
 					}
 		return false;
 			}
+
 	public static int useWeapon() {
 		if(heroClass == 0) { 
 			return useSword();
