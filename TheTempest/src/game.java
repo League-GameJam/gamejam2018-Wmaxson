@@ -39,8 +39,9 @@ public class game {
 	*/
 	public static void main(String[] args) {
 		//fight("treeDerpah", 50, "swung his sword", 0, 0);
-	beginGame();
-		
+		beginGame();
+		//heroGold+=30;
+		//potShop();
 	}
 	//game
 	public static void beginGame() {//defines the hero's class and name
@@ -122,7 +123,7 @@ public class game {
 		heroGold+=30;
 		weaponName = "wind " + weaponName;
 		try {
-			slowText("you got a"+weaponName+"!");
+			slowText("you got a "+weaponName+"!");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -165,24 +166,75 @@ public class game {
 		if (potConf.equalsIgnoreCase("yes")) {
 		
 			hpPot++;
-			bossTwo();
+			potShop2();
 		}
  } else if (shopChoice.equalsIgnoreCase("b")) {
 	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
 		if (potConf.equalsIgnoreCase("yes")) {
 			
 			atkPot++;
-			bossTwo();
+			potShop2();
 		}
  } else if (shopChoice.equalsIgnoreCase("c")) {
 	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
 		if (potConf.equalsIgnoreCase("yes")) {
 			
 			spdPot++;
-			bossTwo();
+			potShop2();
 		}                 
 		}
 		}
+    public static void potShop2() {
+    	String conf2 = choice("Bryn: Is there anythin else you would like to buy?");
+    	if (conf2.equalsIgnoreCase("yes") && heroGold >= 10) {
+    		 String shopChoice = choice("Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)\n"
+    				 + "Or, If you want, you don't have to buy anything.\n"
+    				 + "(Type in leave to leave)" );
+    			hpPot++;
+    			if (shopChoice.equalsIgnoreCase("leave")  ) {
+    				potShop2();
+    			}
+    			if (shopChoice.equalsIgnoreCase("a")) {
+    			String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+    			if (potConf.equalsIgnoreCase("yes")) {
+    				heroGold -= 10;
+    				hpPot++;
+    				potShop2();
+    			}
+    	 } else if (shopChoice.equalsIgnoreCase("b")) {
+    		 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+    			if (potConf.equalsIgnoreCase("yes")) {
+    				heroGold -= 10;
+    				atkPot++;
+    				potShop2();
+    			}
+    	 } else if (shopChoice.equalsIgnoreCase("c")) {
+    		 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
+    			if (potConf.equalsIgnoreCase("yes")) {
+    				heroGold -= 10;
+    				spdPot++;
+    				potShop2();
+    			}                 
+		}
+    	} else if (conf2.equalsIgnoreCase("no")) {
+    		try {
+				slowText("Good luck on your travels, hero!");
+				bossTwo();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}else if(heroGold < 10) {
+    		try {
+				slowText("Sorry. You dont have enough Gold.\n"
+						+ "Good luck on your travels, hero!");
+				bossTwo();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    }
     public static void bossTwo () {
     	heroHp = heroMaxHP;
     	 succ = true;
@@ -316,7 +368,7 @@ public class game {
 					int dmgTaken = mnstrUseWeapon();
 					heroHp-=dmgTaken;
 					try {
-						slowText("You took " + dmgTaken + "/" + heroMaxHP + " Damage! You have " + heroHp + " left.");
+						slowText("You took " + dmgTaken + "" + " Damage! You have " + heroHp + "/" + heroMaxHP + " left.");
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
