@@ -25,6 +25,7 @@ public class game {
 	static int monsterAttack;
 	static String bp = "";
 	static boolean hasPot = false;
+	static boolean succ = false;
 	/*
 	1 = new
 	2 = Wind Spirit
@@ -45,7 +46,7 @@ public class game {
 	public static void beginGame() {//defines the hero's class and name
 			heroName = choice("You have washed up on the beach of an island with no idea how you got there. You can almost remember one thing. Your name \nwhat is it?"); // Defines the name variable.
 			for (int i = 0; i < 1; i++) {
-			String HCS = choice( heroName + "! That sounds like the name of a mighty hero.\nYou have a backpack on your back. Lets see whats inside.\nDo you see: a (A rustey broadsword), b(A bow with weak string), or c(A worn down staff ) \n(hint: type either a b or c below");
+			String HCS = choice( heroName + "! That sounds like the name of a mighty hero.\nYou have a backpack on your back. Lets see whats inside.\nDo you see: a (A rusty broadsword), b(A bow with weak string), or c(A worn down staff ) \n(hint: type either a b or c below");
 			if(HCS.equalsIgnoreCase("a")) {
 			heroClass = 0;
 			weaponName = "sword";
@@ -112,7 +113,7 @@ public class game {
 	} else if (didWin == true) {
 		waitMessage("The villagers cheered as the Wind Spirit slowly faded away. The villager who gave you the " + weaponName  + " came up to you. "
 		+ "\n???: You just defeated on of the " + "Tempest\'s Minions" + " He is not going to like that."
-		+ "\n???: You should try to defeat him before he reins terror on us all. I belive in you. "
+		+ "\n???: You should try to defeat him before he reigns terror on us all. I beleive in you. "
 		+ "\n???: Hey, by the way. What is your name? " + heroName + "? Thats a nice name. Sounds like the name of a true hero. My name is Jimmy James. "
 		+ "\nJimmy: Im the local blacksmith, If you ever need me, I will be here at the village. "
 		+ "\nOn the ground where you defeated the spirit, there lies a " + weaponName + ". "
@@ -126,44 +127,25 @@ public class game {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String mountainTrap = choice("You hear thunder. On top of one of the many mountens, there was a giant storm. \n"
-		+ "Jimmy: It must be another one of the tempests minions. You better go up there quick before they make it to the village! \n"
-		+ "Jimmy: Or... maybe we could let them, come to us... I could talk to the villagers about setting up defences. \n"
-		+ "Jimmy: Its risky... but it could work. What would you like to do " + heroName + "?\n"
-		+ "Would you like to: A (Let them come to us), or B (Fight them alone.)");
-		
-		if (mountainTrap.equalsIgnoreCase("a")) {
-			
-		} else if (mountainTrap.equalsIgnoreCase("b")) {
+		String mountainTrap = choice("You hear thunder. On top of one of the many mountains, there was a giant storm. \n"
+		+ "Jimmy: It must be another one of the Tempest's minions. You better go up there quick before they make it to the village! \n"
+		+ "say anything to continue.");
 		mountain();	
 		}
 		
 	}
-	}
+	
 	public static void mountain() {
 		
 		String villageChoice = choice("Jimmy: Are you sure? "
 				+ "\n... Alright then. If you are going into the mountains, you are going to need some tools. "
 				+ "\nYou are going to need the help of my good friend, Bryn Rainbow."
-				+ "\nShe is an alchmist, which means she makes potions. Why dont you head over to her shop? "
+				+ "\nShe is an alchemist, which means she makes potions. Why dont you head over to her shop? "
 				+ "\n\nYou look around. The villagers are already rebuilding things. It looks like they have done it before"
-				+ "\nWould you like to: "
-				+ "\na (Talk to some of the villagers making houses)"
-				+ "\nb (Help the villagers)"
-				+ "\nor c (Go to Dr. Rainbows shop) "
-				+ "\n\n[Warning. If you choose c, you wont be able to go back to choices a or b. Maybe you should do a or b first.]");
-		
-				if (villageChoice.equalsIgnoreCase("a")) {
-					
-				} else if (villageChoice.equalsIgnoreCase("b")) {
-					
-				} else if (villageChoice.equalsIgnoreCase("c")) {
-					
-				} 
+				+ "\nSay anything to continue.");
+				potShop();
+
 	
-	}
-	public static void trap() {
-		
 	}
 	public static void potShop() {
 		
@@ -201,14 +183,45 @@ public class game {
 		}                 
 		}
 		}
-    	public static void bossTwo () {
+    public static void bossTwo () {
+    	heroHp = heroMaxHP;
+    	 succ = true;
 	choice("AROUND AN HOUR LATER\n\n"
 			+ "You are a good way up the mountain. The Storm gets larger and larger as you get closer and closer. \n"
 			+ "Eventualy you are so close you can see the storm clearly. It looks like a storm, but in the center there is a humanoid figure.\n"
-			+ "They are whereing a robe, and they are completely white. You also notice they have no pupils. All you can see is the white of their eyes. \n"
+			+ "They are whearing a robe, and they are completely white. You also notice they have no pupils. All you can see is the white of their eyes. \n"
 			+ "It notices you.\n"
-			+ "Spirit: Halt! I am under orders to kill you. Prepare for destruction");
+			+ "Spirit: Halt! I am under orders to kill you. Prepare for destruction\n"
+			+ "Say anything to continue.");
 			fight("Storm Spirit", 50, "shot a bolt of lightning", 74, 9);
+			heroHp = heroMaxHP;
+			choice("The storm Spirit slowly disinigrates.\n"
+				+ "Storm Spirit: I have send a message to the others, they will be here soon. You will not be so luckey.\n"
+				+ "On the ground there is a weapon. Its the thunder " + weaponName + "!\n"
+				+ "You obtained the thunder" + weaponName + "!\n"
+				+ "\n"
+				+ "Above you a spirit forms. It looks like a cross between a cloud and a human.\n"
+				+ "You have destroyed my brother, I will destroy you.\n"
+				+ "Say anything to continue.");
+				heroDmg += 5;
+			fight("Cloud Spirit", 65, "Sliced you with a wind sword", 99, 13);
+			choice("As the last bit of cloud is vaporised, you feel this " + weaponName + ", that the cloud spirit droped, pulling twords you. \n"
+				+ " It floats tword you, and into hovers in front of you.\n"
+				+ "The other weapons are released from your backpack, joining the cloud" + weaponName + ", and the fuze together...\n"
+				+ "There is a blinding light, and then...\n"
+				+ "You obtained the master sword!"
+				+ "\n"
+				+ "???: Who Dares Destroy My Creatures! \n"
+				+ "???: You! You are the one I banished long ago. I will finaly be able to finish you off!\n"
+				+ "Type In anything to continue.");
+			heroHp = heroMaxHP;
+			heroDmg +=5;
+			fight("The Tempest", 100, "shot a beam of light", 1000, 15);
+			choice("As you deliver the final blow, there is an explosain. The villagers cheared and cheared as they saw The Tempest defeated.\n"
+				+ "The explosan knocked you all the way down the mountain and into the village square. You could have died, but the master sword protected you!\n"
+				+ "However, you where knocked out from the speed you where flying. The villagers carried you into the bed of an unused house. And you drift into a deserved sleep.\n"
+				+ "Say anything to End.");
+			System.exit(0);
 			
 	}
 	//Tools 
@@ -216,7 +229,7 @@ public class game {
 		for (int i = 0; i < string.length(); i++) {
 			
 			System.out.print(string.charAt(i));
-			Thread.sleep(30);
+			Thread.sleep(40);
 		}
 		System.out.println("");
 		
@@ -262,13 +275,20 @@ public class game {
 		monsterName = monsterNameTemp;
 		
 		try {
-			slowText("You enterd a battle with " + monsterName + "!");
+			slowText("You entered a battle with " + monsterName + "!");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		for (int i = 0; monsterCurrentHealth > 0; i++) {
-			String oof = choice("Would you like to a (use your " + weaponName + " ), b(try to dodge the enemys upcoming attack) or c(use an item)");
+			String oof = null;
+			if (succ == false) {
+				 oof = choice("Would you like to a (use your " + weaponName + " ) or b(try to dodge the enemys upcoming attack)");
+			} else if (succ == true) {
+				 oof = choice("Would you like to a (use your " + weaponName + " ), b(try to dodge the enemys upcoming attack) or c(use an item)");
+			} 
+			
+			
 			if (oof.equalsIgnoreCase("a")) {
 				int  DMGdone = useSword();
 				monsterCurrentHealth -= DMGdone;
@@ -302,14 +322,14 @@ public class game {
 						e.printStackTrace();
 					}
 					if(heroHp <= 0) {
-						waitMessage("Everything started to black away. ", 10);
-						waitMessage("A voice fills you head. Its telling you, \nWake Up! You are needed! \n You where zipped back to a few minuts before. Don't die this time. ", 10);
+						waitMessage("Everything started to black away. ", 2);
+						waitMessage("A voice fills you head. Its telling you, \nWake Up! You are needed! \n You where zipped back to a few minuts before. Don't die this time. ", 2);
 						return false;
 					} 
 					}
 					}else if(oof.equalsIgnoreCase("b")) {
 				try {
-					slowText(monsterName + " " + monsterWeapon + " ,but you dodged it!!");
+					slowText(monsterName + " " + monsterWeapon + ", but you dodged it!!");
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -323,13 +343,13 @@ public class game {
 						if (hasPot = true ) {
 							String potMessage = "You have \n";
 							if (hpPot >= 1) {
-								potMessage += hpPot + " hpPot (To use say \"a\" )\n";
+								potMessage += hpPot + " Health Potion (To use say \"a\" )\n";
 							}
 							if (atkPot >= 1) {
-								potMessage += atkPot + " atkPot (To use say \"b\" )\n";
+								potMessage += atkPot + " Strength Potion(To use say \"b\" )\n";
 							}
 							if (spdPot >= 1) {
-								potMessage += spdPot + " spdPot (To use say \"c\" )\n";
+								potMessage += spdPot + " speedPotion (To use say \"c\" )\n";
 							}
 							potMessage += "Say Cancel to Cancel";
 							String trainStation = choice(potMessage); 
@@ -356,7 +376,33 @@ public class game {
 					}
 		return false;
 			}
-
+/*
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+	
 	public static int useWeapon() {
 		if(heroClass == 0) { 
 			return useSword();
