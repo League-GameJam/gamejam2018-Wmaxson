@@ -189,14 +189,14 @@ public class game {
 	choice("AROUND AN HOUR LATER\n\n"
 			+ "You are a good way up the mountain. The Storm gets larger and larger as you get closer and closer. \n"
 			+ "Eventualy you are so close you can see the storm clearly. It looks like a storm, but in the center there is a humanoid figure.\n"
-			+ "They are whearing a robe, and they are completely white. You also notice they have no pupils. All you can see is the white of their eyes. \n"
+			+ "They are wearing a robe, and they are completely white. You also notice they have no pupils. All you can see is the white of their eyes. \n"
 			+ "It notices you.\n"
 			+ "Spirit: Halt! I am under orders to kill you. Prepare for destruction\n"
 			+ "Say anything to continue.");
 			fight("Storm Spirit", 50, "shot a bolt of lightning", 74, 9);
 			heroHp = heroMaxHP;
 			choice("The storm Spirit slowly disinigrates.\n"
-				+ "Storm Spirit: I have send a message to the others, they will be here soon. You will not be so luckey.\n"
+				+ "Storm Spirit: I have send a message to the others, they will be here soon. You will not be so lucky.\n"
 				+ "On the ground there is a weapon. Its the thunder " + weaponName + "!\n"
 				+ "You obtained the thunder" + weaponName + "!\n"
 				+ "\n"
@@ -215,8 +215,8 @@ public class game {
 				+ "???: You! You are the one I banished long ago. I will finaly be able to finish you off!\n"
 				+ "Type In anything to continue.");
 			heroHp = heroMaxHP;
-			heroDmg +=5;
-			fight("The Tempest", 100, "shot a beam of light", 1000, 15);
+			heroDmg +=15;
+			fight("The Tempest", 75, "shot a beam of light", 1000, 15);
 			choice("As you deliver the final blow, there is an explosain. The villagers cheared and cheared as they saw The Tempest defeated.\n"
 				+ "The explosan knocked you all the way down the mountain and into the village square. You could have died, but the master sword protected you!\n"
 				+ "However, you where knocked out from the speed you where flying. The villagers carried you into the bed of an unused house. And you drift into a deserved sleep.\n"
@@ -493,7 +493,7 @@ public class game {
 	public static void healPot() {
 		try {
 			slowText("You consumed the Health potion!\n"
-					+ "+ 5 Health");
+					+ "+ 25 Health");
 			heroHp += 25 ;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
