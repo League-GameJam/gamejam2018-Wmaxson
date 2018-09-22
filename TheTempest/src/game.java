@@ -46,7 +46,7 @@ public class game {
 	public static void beginGame() {//defines the hero's class and name
 			heroName = choice("You have washed up on the beach of an island with no idea how you got there. You can almost remember one thing. Your name \nwhat is it?"); // Defines the name variable.
 			for (int i = 0; i < 1; i++) {
-			String HCS = choice( heroName + "! That sounds like the name of a mighty hero.\nYou have a backpack on your back. Lets see whats inside.\nDo you see: a (A rusty broadsword), b(A bow with weak string), or c(A worn down staff ) \n(hint: type either a b or c below");
+			String HCS = choice( heroName + "! That sounds like the name of a mighty hero.\nYou have a backpack on your back. Let's see what's inside.\nDo you see: a (A rusty broadsword), b(A bow with weak string), or c(A worn down staff ) \n(hint: type either a b or c below");
 			if(HCS.equalsIgnoreCase("a")) {
 			heroClass = 0;
 			weaponName = "sword";
@@ -75,14 +75,14 @@ public class game {
 			heroDmg = 5;
 			beachVilla();
 			} else {
-			choice("Im sorry I didn't understand. Please repeat that with one of the letters A, B or C. (Type in the word okay to continue)");
+			choice("I’m sorry I didn't understand. Please repeat that with one of the letters A, B or C. (Type in the word okay to continue)");
 				i--;
 			}
 		}
 	}
 	public static void beachVilla() { //Would you like to : a (Camp out on the beach) or b (Go into the forest)");
 
-		pathOne = choice("Wow! you must have been a great " + heroClassName + "!\nYou look at your surroundings. Above the trees in the distence there is smoke! There might be a village. You start your journey into the forest.\n(type in anything anything to continue.)");
+		pathOne = choice("Wow! you must have been a great " + heroClassName + "!\nYou look at your surroundings. Above the trees in the distance there is smoke! There might be a village. You start your journey into the forest.\n(type in anything anything to continue.)");
 		for (int i = 0; i < 1; i++) {
 		
 			if (pathOne.equalsIgnoreCase(("sad")) ) {
@@ -101,11 +101,11 @@ public class game {
 	}
 	public static void villa() { // First Fight
 		int a = 1;
-		waitMessage("You arived at the village. It was chaos. Villagers where running around everywhere. In the center of it all is a giant storm spirit. \n"
+		waitMessage("You arrived at the village. It was chaos. Villagers were running around everywhere. In the center of it all is a giant storm spirit. \n"
 	+ "It is blowing strong winds and tornados in every direction"
 	+ "\nOne spots you, and runs up to you. "
-	+ "\n???: Sir, do you know how to weild a " + weaponName + "? "
-	+ "\nYou feel like you know how to use it. You take the " + weaponName + " from him, and run strait twords the eye of the storm\n", 1);
+	+ "\n???: Sir, do you know how to wield a " + weaponName + "? "
+	+ "\nYou feel like you know how to use it. You take the " + weaponName + " from him, and run straight towards the eye of the storm\n", 1);
 	Boolean didWin = fight("Wind Spirit", 25, "Blasted Air", 30, 6);
 	
 	if (didWin == false) {
@@ -113,11 +113,11 @@ public class game {
 	} else if (didWin == true) {
 		waitMessage("The villagers cheered as the Wind Spirit slowly faded away. The villager who gave you the " + weaponName  + " came up to you. "
 		+ "\n???: You just defeated on of the " + "Tempest\'s Minions" + " He is not going to like that."
-		+ "\n???: You should try to defeat him before he reigns terror on us all. I beleive in you. "
-		+ "\n???: Hey, by the way. What is your name? " + heroName + "? Thats a nice name. Sounds like the name of a true hero. My name is Jimmy James. "
+		+ "\n???: You should try to defeat him before he reigns terror on us all. I believe in you. "
+		+ "\n???: Hey, by the way. What is your name? " + heroName + "? That's a nice name. Sounds like the name of a true hero. My name is Jimmy James. "
 		+ "\nJimmy: Im the local blacksmith, If you ever need me, I will be here at the village. "
 		+ "\nOn the ground where you defeated the spirit, there lies a " + weaponName + ". "
-		+ "\nJimmy: that is yours now. You won it. Its called a trophy"  ,1);
+		+ "\nJimmy: that is yours now. You won it. It's called a trophy"  ,1);
 		heroDmg=10;
 		heroGold+=30;
 		weaponName = "wind " + weaponName;
@@ -140,7 +140,7 @@ public class game {
 		String villageChoice = choice("Jimmy: Are you sure? "
 				+ "\n... Alright then. If you are going into the mountains, you are going to need some tools. "
 				+ "\nYou are going to need the help of my good friend, Bryn Rainbow."
-				+ "\nShe is an alchemist, which means she makes potions. Why dont you head over to her shop? "
+				+ "\nShe is an alchemist, which means she makes potions. Why don't you head over to her shop? "
 				+ "\n\nYou look around. The villagers are already rebuilding things. It looks like they have done it before"
 				+ "\nSay anything to continue.");
 				potShop();
@@ -154,7 +154,7 @@ public class game {
 			 + "Is there anything I can do for you? I have a few potions in stock. Would you like some?\n"
 			 + "I will even give you one free Health potion in return for saving the village.\n"
 			 + "Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)\n"
-			 + "Or, If you want, you dont have to buy anything.\n"
+			 + "Or, If you want, you don't have to buy anything.\n"
 			 + "(Type in leave to leave)" );
 		hpPot++;
 		if (shopChoice.equalsIgnoreCase("leave")  ) {
@@ -188,16 +188,16 @@ public class game {
     	 succ = true;
 	choice("AROUND AN HOUR LATER\n\n"
 			+ "You are a good way up the mountain. The Storm gets larger and larger as you get closer and closer. \n"
-			+ "Eventualy you are so close you can see the storm clearly. It looks like a storm, but in the center there is a humanoid figure.\n"
+			+ "Eventually you are so close you can see the storm clearly. It looks like a storm, but in the center there is a humanoid figure.\n"
 			+ "They are wearing a robe, and they are completely white. You also notice they have no pupils. All you can see is the white of their eyes. \n"
 			+ "It notices you.\n"
 			+ "Spirit: Halt! I am under orders to kill you. Prepare for destruction\n"
 			+ "Say anything to continue.");
 			fight("Storm Spirit", 50, "shot a bolt of lightning", 74, 9);
 			heroHp = heroMaxHP;
-			choice("The storm Spirit slowly disinigrates.\n"
+			choice("The storm Spirit slowly disintegrates.\n"
 				+ "Storm Spirit: I have send a message to the others, they will be here soon. You will not be so lucky.\n"
-				+ "On the ground there is a weapon. Its the thunder " + weaponName + "!\n"
+				+ "On the ground there is a weapon. It's the thunder " + weaponName + "!\n"
 				+ "You obtained the thunder" + weaponName + "!\n"
 				+ "\n"
 				+ "Above you a spirit forms. It looks like a cross between a cloud and a human.\n"
@@ -205,20 +205,20 @@ public class game {
 				+ "Say anything to continue.");
 				heroDmg += 5;
 			fight("Cloud Spirit", 65, "Sliced you with a wind sword", 99, 13);
-			choice("As the last bit of cloud is vaporised, you feel this " + weaponName + ", that the cloud spirit droped, pulling twords you. \n"
-				+ " It floats tword you, and into hovers in front of you.\n"
+			choice("As the last bit of cloud is vapourized, you feel this " + weaponName + ", that the cloud spirit dropped, pulling towards you. \n"
+				+ " It floats toward you, and into hovers in front of you.\n"
 				+ "The other weapons are released from your backpack, joining the cloud" + weaponName + ", and the fuze together...\n"
 				+ "There is a blinding light, and then...\n"
 				+ "You obtained the master sword!"
 				+ "\n"
 				+ "???: Who Dares Destroy My Creatures! \n"
-				+ "???: You! You are the one I banished long ago. I will finaly be able to finish you off!\n"
+				+ "???: You! You are the one I banished long ago. I will finally be able to finish you off!\n"
 				+ "Type In anything to continue.");
 			heroHp = heroMaxHP;
 			heroDmg +=15;
 			fight("The Tempest", 75, "shot a beam of light", 1000, 15);
-			choice("As you deliver the final blow, there is an explosain. The villagers cheared and cheared as they saw The Tempest defeated.\n"
-				+ "The explosan knocked you all the way down the mountain and into the village square. You could have died, but the master sword protected you!\n"
+			choice("As you deliver the final blow, there is an explosion. The villagers cheated and cheered as they saw The Tempest defeated.\n"
+				+ "The explosion knocked you all the way down the mountain and into the village square. You could have died, but the master sword protected you!\n"
 				+ "However, you where knocked out from the speed you where flying. The villagers carried you into the bed of an unused house. And you drift into a deserved sleep.\n"
 				+ "Say anything to End.");
 			System.exit(0);
@@ -283,9 +283,9 @@ public class game {
 		for (int i = 0; monsterCurrentHealth > 0; i++) {
 			String oof = null;
 			if (succ == false) {
-				 oof = choice("Would you like to a (use your " + weaponName + " ) or b(try to dodge the enemys upcoming attack)");
+				 oof = choice("Would you like to a (use your " + weaponName + " ) or b(try to dodge the enemy's upcoming attack)");
 			} else if (succ == true) {
-				 oof = choice("Would you like to a (use your " + weaponName + " ), b(try to dodge the enemys upcoming attack) or c(use an item)");
+				 oof = choice("Would you like to a (use your " + weaponName + " ), b(try to dodge the enemy's upcoming attack) or c(use an item)");
 			} 
 			
 			
@@ -383,7 +383,8 @@ public class game {
  * 
  * 
  * 
- * 
+ *  
+*
  * 
  * 
  * 
@@ -511,3 +512,4 @@ public class game {
 		}
 	}
 }
+
