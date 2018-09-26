@@ -1,4 +1,4 @@
-package theTempest;
+
 
 import java.io.*;
 import java.util.Random;
@@ -26,6 +26,7 @@ public class game {
 	static String bp = "";
 	static boolean hasPot = false;
 	static boolean succ = false;
+	static boolean devMode = false;
 	/*
 	1 = new
 	2 = Wind Spirit
@@ -38,10 +39,15 @@ public class game {
 	
 	*/
 	public static void main(String[] args) {
+		if (devMode = true) {
+			heroName = "treeDerpah";
+			heroGold+=30;
+		}
 		//fight("treeDerpah", 50, "swung his sword", 0, 0);
 		beginGame();
 		//heroGold+=30;
 		//potShop();
+		
 	}
 	//game
 	public static void beginGame() {//defines the hero's class and name
@@ -164,28 +170,28 @@ public class game {
 		if (shopChoice.equalsIgnoreCase("a")) {
 		String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
 		if (potConf.equalsIgnoreCase("yes")) {
-		
+			heroGold-=10;
 			hpPot++;
 			potShop2();
 		}
  } else if (shopChoice.equalsIgnoreCase("b")) {
 	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
 		if (potConf.equalsIgnoreCase("yes")) {
-			
+			heroGold-=10;
 			atkPot++;
 			potShop2();
 		}
  } else if (shopChoice.equalsIgnoreCase("c")) {
 	 String potConf = choice("that will cost you 10 gold. You have " + heroGold + ". Would you like to buy it? (yes or no)");
 		if (potConf.equalsIgnoreCase("yes")) {
-			
+			heroGold-=10;
 			spdPot++;
 			potShop2();
 		}                 
 		}
 		}
     public static void potShop2() {
-    	String conf2 = choice("Bryn: Is there anythin else you would like to buy?");
+    	String conf2 = choice("Bryn: Is there anythin else you would like to buy? (yes or no)");
     	if (conf2.equalsIgnoreCase("yes") && heroGold >= 10) {
     		 String shopChoice = choice("Would you like to buy: a (Health potion), b (Strength potion) or c (a Speed potion)\n"
     				 + "Or, If you want, you don't have to buy anything.\n"
@@ -455,7 +461,7 @@ public class game {
  *
  *
  */
-	
+	//Weapons and potions
 	public static int useWeapon() {
 		if(heroClass == 0) { 
 			return useSword();
@@ -564,4 +570,80 @@ public class game {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
